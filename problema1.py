@@ -1,6 +1,6 @@
 
 # in cadrul acestei abordari se considera pozitiile [end:start] ale frazei initiale
-def problema_1_1(phrase, changes):
+def problema_1(phrase, changes):
     """
 
     :param fraza initiala
@@ -20,20 +20,18 @@ def problema_1_1(phrase, changes):
         phrase=phrase.replace(word,changes[i][2])
     return phrase
 
-#in aceasta abordare se considera ca pozitiile [start:end] sunt dinamice
-#dinamicitatea consta in faptul ca reprezinta pozitiile cuvintelor in fraza ce a primit deja modificarile anterioare
-def problema_1_2(phrase,changes):
-    for val in changes:
-        phrase="".join((phrase[:val[0]],val[2],phrase[val[1]:]))
-    return phrase
-
 phrase="Lorem Ipsum este pur si simplu o macheta pentru text a industriei tipografice. "
 changes=[[17,20,"cu siguranta"],
-         [34,40,"emblema"],
-         [63,77,"informatice"]
+         [33,40,"emblema"],
+         [66,77,"informatice"]
          ]
-
-final=problema_1_1(phrase,changes)
+#modificare fraza
+final=problema_1(phrase,changes)
 print(final)
-final2=problema_1_2(phrase,changes)
-print(final2)
+
+
+#eliminarea sectiunii "si simplu"
+print(final.find("si simplu"))
+final_phrase=final[:final.find("si simplu ")] + final[final.find("si simplu ")+len("si simplu "):]
+print(final_phrase)
+
